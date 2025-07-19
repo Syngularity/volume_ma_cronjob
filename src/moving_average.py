@@ -26,9 +26,9 @@ write_api = client.write_api(write_options=SYNCHRONOUS)
 
 # Define the Flux query
 query = '''
-from(bucket: "historical")
+from(bucket: "stocks_5m")
   |> range(start: -30d)
-  |> filter(fn: (r) => r._measurement == "volumes" and r._field == "Volume")
+  |> filter(fn: (r) => r._measurement == "tick" and r._field == "Volume")
   |> group(columns: ["ticker"])
   |> sort(columns: ["_time"]) 
 '''
